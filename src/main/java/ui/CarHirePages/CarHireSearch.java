@@ -2,7 +2,6 @@ package ui.CarHirePages;
 
 
 import businessobjects.CarHireDetails;
-import businessobjects.Route;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -37,6 +36,9 @@ public class CarHireSearch extends AbstractPage {
     @FindBy(id = "searchCarsFormBtn-searchcars")
     WebElement searchButton;
 
+    @FindBy(xpath = "//i[@data-comp-id='ct-calendar-nav-next']")
+    WebElement nextMonth;
+
     public CarHireSearch(WebDriver driver) {
         this.driver = driver;
         wait = new WebDriverWait(driver, 20);
@@ -58,9 +60,12 @@ public class CarHireSearch extends AbstractPage {
         startDate.click();
     }
 
-    public void clickOutboiundDate(){
-        waitElement(outboundDate);
-        outboundDate.click();
+    public void clickOutboundDate(CarHireDetails carHireDetails){
+        String date=carHireDetails.getPickUpDate();
+        while(driver.findElements(By.xpath("//*[@id='day-" + date + "']")).size() == 0){
+            clickNextMonth();
+        }
+        driver.findElement(By.xpath("//*[@id='" + date + "']")).click();
     }
 
     public void clickEndDate(){
@@ -68,9 +73,17 @@ public class CarHireSearch extends AbstractPage {
         endDate.click();
     }
 
-    public void clickInboundDate(){
-        waitElement(inboundDate);
-        inboundDate.click();
+    public void clickNextMonth(){
+        waitElement(nextMonth);
+        nextMonth.click();
+    }
+
+    public void clickInboundDate(CarHireDetails carHireDetails){
+        String date=carHireDetails.getDropOffDate();
+        while(driver.findElements(By.xpath("//*[@id='day-" + date + "']")).size() == 0){
+            clickNextMonth();
+        }
+        driver.findElement(By.xpath("//*[@id='" + date + "']")).click();
     }
 
     public void clickSearchButton(){
