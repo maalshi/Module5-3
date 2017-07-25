@@ -47,11 +47,11 @@ public class StepDefinitions {
     @And("^I press Find Flights button")
     public void press_find_flights_button(){
         homepage.clickFindFlightButton();
-        FlightResultsPage flightresults = new FlightResultsPage(driver);
     }
 
     @Then ("^I see Flight Results page")
     public void i_see_flight_results_page() {
+        FlightResultsPage flightresults = new FlightResultsPage(driver);
         Assert.assertEquals("Dublin to Paris", driver.findElement(By.xpath("//div[contains(@data-test-id,'first')]//div[contains(@class,'flight-results')]//span")).getText());
     }
 }
