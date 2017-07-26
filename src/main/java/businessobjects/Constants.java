@@ -9,9 +9,9 @@ public  class Constants {
         return "dublin";
     }
     public static String OUTBOUNDDATE (){
-        return "201791";
+        return "day-201791";
     }
     public static String INBOUNDDATE (){
-        return "201792";
+        return "day-201792";
     }
 }

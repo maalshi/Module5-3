@@ -24,13 +24,13 @@ public class CarHireSearch extends AbstractPage {
     @FindBy(id = "pickupDate")
     WebElement startDate;
 
-    @FindBy(xpath = "//td[@data-enabled=\"true\"][2]")
+    @FindBy(xpath = "//td[@id='day-2017810'][1]")
     WebElement outboundDate;
 
     @FindBy(id = "returnDate")
     WebElement endDate;
 
-    @FindBy(xpath = "//td[@data-enabled=\"true\"][3]")
+    @FindBy(xpath = "//td[@id='day-2017811'][1]")
     WebElement inboundDate;
 
     @FindBy(id = "searchCarsFormBtn-searchcars")
@@ -90,4 +90,15 @@ public class CarHireSearch extends AbstractPage {
         waitElement(searchButton);
         searchButton.click();
     }
+
+    public void clickFixedOutboundDate(){
+        //waitElement(outboundDate);
+        outboundDate.click();
+    }
+
+    public void clickFixedInboundDate(){
+        waitElement(inboundDate);
+        inboundDate.click();
+    }
+
 }

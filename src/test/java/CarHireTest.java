@@ -13,8 +13,8 @@ public class CarHireTest extends BaseTest {
 
     @Test
     public void findCarHire() {
-        driver.get("https://www.aerlingus.com/html/en-US/home.html");
-        Homepage homepage = new Homepage(driver);
+        driver.get("http://www.aerlinguscars.com/en/?clientId=567309#/searchcars");
+        /*Homepage homepage = new Homepage(driver);
         homepage.clickTabCarHire();
         String winHandleBefore = driver.getWindowHandle();
         homepage.clickButtonMoreInfo();
@@ -23,18 +23,20 @@ public class CarHireTest extends BaseTest {
                 driver.switchTo().window(winHandle);
             }
         }
-
+*/
         CarHireSearch search = new CarHireSearch(driver);
         CarHireDetails carHireDetails = new CarHireDetails(Constants.CITY());
         carHireDetails.setPickUpDate(Constants.OUTBOUNDDATE());
         carHireDetails.setDropOffDate(Constants.INBOUNDDATE());
         search.sendKeysPickUpLocation(carHireDetails);
-        winHandleBefore = driver.getWindowHandle();
+        String winHandleBefore = driver.getWindowHandle();
         search.clickSuggestion();
         search.clickStartDate();
-        search.clickOutboundDate(carHireDetails);
-        search.clickEndDate();
-        search.clickInboundDate(carHireDetails);
+        //search.clickOutboundDate(carHireDetails);
+        search.clickFixedOutboundDate();
+        //search.clickEndDate();
+        //search.clickInboundDate(carHireDetails);
+        search.clickFixedInboundDate();
         search.clickSearchButton();
         CarHireResults results = new CarHireResults(driver);
         //AssertUtil util = new AssertUtil();

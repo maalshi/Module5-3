@@ -8,20 +8,16 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import ui.AbstractPage;
 
 /**
- * Created by Maryia_Shynkarenka on 6/13/2017.
+ * Created by Maryia_Shynkarenka on 7/18/2017.
  */
 public class PaxInfoPage extends AbstractPage {
-
-    WebDriver driver;
-    WebDriverWait wait;
-
     @FindBy(xpath = "//option[text()='Mr']")
     WebElement titleMr;
 
-    @FindBy(id = "test_adultFname-0-1")
+    @FindBy(xpath = "//input[@id='test_adultFname-0-1']")
     WebElement firstName;
 
-    @FindBy(id = "test_adultLname-0-2")
+    @FindBy(xpath = "//input[@id='test_adultLname-0-2']")
     WebElement familyName;
 
     @FindBy(xpath = "//*[@id='test_email-3']")
@@ -41,7 +37,7 @@ public class PaxInfoPage extends AbstractPage {
 
     public PaxInfoPage(WebDriver driver) {
         this.driver = driver;
-        wait = new WebDriverWait(driver, 10);
+        wait = new WebDriverWait(driver, 20);
         PageFactory.initElements(driver, this);
     }
 
@@ -55,11 +51,11 @@ public class PaxInfoPage extends AbstractPage {
     }
 
     public void sendKeysFamilyName(String surname){
-       familyName.sendKeys(surname);
+        familyName.sendKeys(surname);
     }
 
     public void sendKeysEmail(String emailAddress){
-       email.sendKeys(emailAddress);
+        email.sendKeys(emailAddress);
     }
 
     public void sendKeysConfirmEmail(String confirmEmailAddress){
@@ -79,3 +75,6 @@ public class PaxInfoPage extends AbstractPage {
         continueButton.click();
     }
 }
+
+
+

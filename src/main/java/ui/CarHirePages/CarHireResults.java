@@ -13,13 +13,13 @@ import ui.AbstractPage;
  */
 public class CarHireResults extends AbstractPage{
 
-    @FindBy(xpath = "//label[text()='Pick-up']/following-sibling::p[@class='ct-break-word']")
+    @FindBy(xpath = "//input[@id='pickupLocation']")
     WebElement outboundAirport;
 
     @FindBy(id = "pickupLocation")
     WebElement outboundDate;
 
-    @FindBy(xpath = "//label[text()='Drop-off']/following-sibling::p[@class='ct-break-word']")
+    @FindBy(xpath = "//input[@id='returnLocation']")
     WebElement inboundAirport;
 
     @FindBy(id = "pickupLocation")
@@ -33,11 +33,13 @@ public class CarHireResults extends AbstractPage{
 
     public String getOutboundAirportText(){
         waitElement(outboundAirport);
+        outboundAirport.click();
         return outboundAirport.getText();
     }
 
     public String getInboundAirportText(){
-        waitElement(inboundAirport);
+         waitElement(inboundAirport);
+         inboundAirport.click();
          return inboundAirport.getText() ;
     }
 }

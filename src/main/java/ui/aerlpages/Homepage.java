@@ -67,7 +67,7 @@ public class Homepage extends AbstractPage {
 
     public void clickFindFlightButton(){
         waitElement(findFlightButton);
-        super.waitHighlightAndClickElement(findFlightButton);
+        //super.waitHighlightAndClickElement(findFlightButton);
         driver.findElement(findFlightButton).click();
     }
 
