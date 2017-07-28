@@ -34,12 +34,12 @@ public class CarHireResults extends AbstractPage{
     public String getOutboundAirportText(){
         waitElement(outboundAirport);
         outboundAirport.click();
-        return outboundAirport.getText();
+        return outboundAirport.getAttribute("value");
     }
 
     public String getInboundAirportText(){
          waitElement(inboundAirport);
          inboundAirport.click();
-         return inboundAirport.getText() ;
+         return inboundAirport.getAttribute("value");
     }
 }

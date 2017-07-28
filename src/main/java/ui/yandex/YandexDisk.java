@@ -65,7 +65,7 @@ public class YandexDisk extends AbstractPage {
     }
 
     public WebElement getRandomPicture(){
-        waitElement(picturesLocator);
+        waitElement((WebElement) picturesLocator);
         return pictures.get(new Random().nextInt(pictures.size()));
     }
 
@@ -95,7 +95,7 @@ public class YandexDisk extends AbstractPage {
 
     public YandexDisk movePictureIntoBin(WebElement picture){
         super.dragAndDrop(picture, bin);
-        waitElement(By.xpath("//div[@class='notifications__text js-message']"));
+        waitElementByLocator(By.xpath("//div[@class='notifications__text js-message']"));
         return this;
     }
 
@@ -116,7 +116,7 @@ public class YandexDisk extends AbstractPage {
         waitForElementInvisible(By.xpath("//div[@class='notifications__text js-message']"));
         waitElement(buttonRestore);
         buttonRestore.click();
-        waitElement(By.xpath("//div[@class='notifications__text js-message']"));
+        waitElementByLocator(By.xpath("//div[@class='notifications__text js-message']"));
         return this;
     }
 
@@ -128,7 +128,7 @@ public class YandexDisk extends AbstractPage {
     }
 
     public YandexDisk tickCheckBox(){
-        waitElement(picturesLocator);
+        waitElementByLocator(picturesLocator);
         Actions action = new Actions(driver);
         action.moveToElement(driver.findElement(picturesLocator)).click(pictureCheckBox).perform();
         return this;

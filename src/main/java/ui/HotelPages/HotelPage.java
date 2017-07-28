@@ -34,32 +34,32 @@ public class HotelPage extends AbstractPage {
 
     public HotelPage (WebDriver driver) {
         this.driver = driver;
-        wait = new WebDriverWait(driver, 10);
+        wait = new WebDriverWait(driver, 15);
         PageFactory.initElements(driver, this);
     }
 
     public String verifyHotelsText(){
-        waitElement(buttonSearchFlights);
+        //waitElement(buttonSearchFlights);
         return hotelText.getText();
     }
 
     public String verifyWereChangingText(){
-        waitElement(wereChangingText);
+       // waitElement(wereChangingText);
         return wereChangingText.getText();
     }
 
     public String verifyNewHotelsPartnerText(){
-        waitElement(newHotelPatnersText);
+        //waitElement(newHotelPatnersText);
        return newHotelPatnersText.getText();
     }
 
     public String verifyWerePartneringText(){
-        waitElement(werePatneringText);
+       // waitElement(werePatneringText);
         return werePatneringText.getText();
     }
 
     public void clickButtonSearchFlights(){
-        waitElement(wereChangingText);
+       // waitElement(wereChangingText);
         buttonSearchFlights.click();
     }
 }

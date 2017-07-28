@@ -18,11 +18,11 @@ public class PlanPage extends AbstractPage {
 
     public PlanPage(WebDriver driver) {
         this.driver = driver;
-        wait = new WebDriverWait(driver, 10);
+        wait = new WebDriverWait(driver, 20);
     }
 
     public String verifyTextBookFlights(){
-        waitElement(textBookFlights);
+//        waitElementByLocator(textBookFlights);
         return driver.findElement(textBookFlights).getText();
     }
 }

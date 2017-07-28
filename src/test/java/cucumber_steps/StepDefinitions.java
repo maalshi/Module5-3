@@ -1,18 +1,18 @@
 package cucumber_steps;
 
+import businessobjects.Constants;
+import businessobjects.Origin;
 import config.WebDriverSingleton;
 import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
-import ui.AbstractPage;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import businessobjects.Route;
 import ui.aerlpages.FlightResultsPage;
 import ui.aerlpages.Homepage;
-import utils.AssertUtil;
 
 /**
  * Created by Maryia_Shynkarenka on 7/24/2017.
@@ -22,24 +22,43 @@ public class StepDefinitions {
     WebDriver driver;
     Homepage homepage;
 
+    Route route;
+
     @When("^I open Aerlingus Homepage$")
     public void i_open_aerlingus_homepage(){
         driver = WebDriverSingleton.getWebDriverInstance();
         driver.get("https://www.aerlingus.com/html/en-US/home.html");
     }
 
+    /* @When ("^I enter origin$")
+     public void i_enter_origin()throws Throwable{
+         Homepage homepage = new Homepage(driver);
+         homepage.waitElementByLocator(By.xpath("//input[@id='origin']"));
+         homepage.clickOrigin();
+         homepage.sendKeysOrigin("dublin");
+         homepage.clickOriginSuggestion();
+         throw new PendingException();
+     }
+
+         @And("^I enter desination$")
+    public void i_enter_destination()throws Throwable{
+        homepage.sendKeysDestination("paris");
+        homepage.clickDestinationSuggestion();
+        throw new PendingException();
+    }*/
+
     @When ("^I enter origin$")
-    public void i_enter_origin()throws Throwable{
-        homepage.waitElement(By.xpath("//input[@id='origin']"));
-        homepage.clickOrigin();
-        homepage.sendKeysOrigin("dublin");
+    public void i_enter_origin(String origin)throws Throwable{
+        Homepage homepage = new Homepage(driver);
+        homepage.waitElementByLocator(By.xpath("//input[@id='origin']"));
+        homepage.sendKeysOrigin((Constants.ORIGIN()));
         homepage.clickOriginSuggestion();
         throw new PendingException();
     }
 
     @And("^I enter desination$")
-    public void i_enter_destination()throws Throwable{
-        homepage.sendKeysDestination("paris");
+    public void i_enter_destination(String destination)throws Throwable{
+        route.setDestination(Constants.DESTINATION());
         homepage.clickDestinationSuggestion();
         throw new PendingException();
     }

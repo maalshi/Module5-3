@@ -1,5 +1,6 @@
 package ui.aerlpages;
 
+import businessobjects.Constants;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -26,7 +27,7 @@ public class Homepage extends AbstractPage {
     }
 
     public void clickOrigin(){
-        super.waitElement(originField);
+        super.waitElementByLocator(originField);
         driver.findElement(originField).click();
     }
 
@@ -35,18 +36,18 @@ public class Homepage extends AbstractPage {
     }
 
     public void setRoute (Route route){
-        waitElement(originField);
+        waitElementByLocator(originField);
         driver.findElement(originField).click();
         //driver.findElement(originField).clear();
         driver.findElement(originField).sendKeys(route.getOrigin());
         driver.findElement(suggestion).click();
-        waitElement(destinationField);
+        waitElementByLocator(destinationField);
         driver.findElement(destinationField).sendKeys(route.getDestination());
         driver.findElement(suggestion).click();
     }
 
-    public void sendKeysOrigin(String originCity){
-        driver.findElement(originField).sendKeys(originCity);
+    public void sendKeysOrigin(String origin){
+        driver.findElement(originField).sendKeys();
     }
 
     public void clickOriginSuggestion(){
@@ -66,28 +67,28 @@ public class Homepage extends AbstractPage {
     }
 
     public void clickFindFlightButton(){
-        waitElement(findFlightButton);
+        waitElementByLocator(findFlightButton);
         //super.waitHighlightAndClickElement(findFlightButton);
         driver.findElement(findFlightButton).click();
     }
 
     public void clickTabHotel(){
-        waitElement(tabHotel);
+        waitElementByLocator(tabHotel);
         driver.findElement(tabHotel).click();
     }
 
     public void clickButtonViewHotels(){
-        waitElement(buttonViewHotels);
+        waitElementByLocator(buttonViewHotels);
         driver.findElement(buttonViewHotels).click();
     }
 
     public void clickTabCarHire(){
-        waitElement(tabCarHire);
+        waitElementByLocator(tabCarHire);
         driver.findElement(tabCarHire).click();
     }
 
     public void clickButtonMoreInfo(){
-        waitElement(buttonMoreInfo);
+        waitElementByLocator(buttonMoreInfo);
         driver.findElement(buttonMoreInfo).click();
     }
 }

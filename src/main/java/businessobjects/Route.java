@@ -2,12 +2,15 @@ package businessobjects;
 
 public class Route {
 
-    private String origin = "dublin";
-    private String destination = "paris";
+    private String origin;
+    private String destination;
 
     public Route(String origin, String destination) {
         this.origin = origin;
         this.destination = destination;
+    }
+
+    public Route(String origin) {
     }
 
     public String getOrigin(){

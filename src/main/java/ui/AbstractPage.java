@@ -25,7 +25,7 @@ public abstract class AbstractPage{
         wait.until(ExpectedConditions.elementToBeClickable(element));
     }
 
-    public void waitElement (By locator){
+    public void waitElementByLocator (By locator){
         wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(locator)));
     }
 
